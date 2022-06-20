@@ -42,8 +42,7 @@ public class UserServiceImpl implements UserService {
         user.setAbout(userDto.getAbout());
 
         User updatedUser = this.userRepository.save(user);
-        UserDto userDto1 = this.userToDto(updatedUser);
-        return userDto1;
+        return this.userToDto(updatedUser);
     }
 
     @Override
@@ -67,13 +66,11 @@ public class UserServiceImpl implements UserService {
 
     //setting data from entity to dto class for usage
     public User dtoToUser(UserDto userDto) {
-        User user = this.modelMapper.map(userDto, User.class);
-        return user;
+        return this.modelMapper.map(userDto, User.class);
     }
 
     //setting data from dto class to entity for usage
     public UserDto userToDto(User user) {
-        UserDto userDto = this.modelMapper.map(user, UserDto.class);
-        return userDto;
+        return this.modelMapper.map(user, UserDto.class);
     }
 }
